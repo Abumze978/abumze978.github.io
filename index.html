@@ -1,8 +1,19 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Hello World!</title>
-    </head>
-    <body>
-        <p>Hello World</p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Wildhood Page</title>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+
+    <script>
+        // Check if the page has loaded with a 404 error
+        if (window.location.href.includes('404')) {
+            // Redirect to another webpage when a 404 error is detected
+            window.location.href = 'https://wildhood.app';
+        }
+    </script>
+</body>
 </html>
+
