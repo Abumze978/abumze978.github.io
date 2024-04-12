@@ -1,39 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Custom 404 Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wildhood App</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            font-family: Helvetica, Sans-Serif, sans-serif;
+            padding: 10px 20px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            font-size: 16px;
+            background-color: #000000; /* Black button color */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #333333; /* Darker black on hover */
+        }
+        img {
+            max-width: 100%;
+            width: 250px;
+            height: 250px;
+            margin-left: -10px;
+            margin-bottom: 25px;
+        }
+        p {
+            font-family: Helvetica, Sans-Serif, sans-serif;
+        }
+        a {
+            font-family: Helvetica, Sans-Serif, sans-serif;
+            color: black; /* Black color for the anchor text */
+        }
+    </style>
 </head>
 <body>
-    <h1>Wildhood app</h1>
-
-    <script>
-
-        function detectDevice() {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      
-      if (/android/i.test(userAgent)) {
-        return "Android";
-      }
-      
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return "iOS";
-      }
-      
-      return "Other";
-    }
-
-
-        var deviceType = detectDevice();
-      
-      if (deviceType === "Othet") {
-        window.location.href = "https://wildhood.app";
-      } else {
-        // Redirect to another webpage after a delay
-        setTimeout(function () {
-            window.location.href = 'https://wildhood.app';
-        }, 10000); // Redirect after 0.01 seconds (adjust as needed)
-      }
+<div class="container">
+    <img src="logo.png" alt="Placeholder Image">
+    <br>
+    <button onclick="redirectToOtherWebsite()">Vedi in app</button>
+    <script type="text/javascript">
+        setTimeout(function() {
+            redirectToOtherWebsite();
+        }, 100);
     </script>
+    <br>
+    <p>Se ancora non ci conosci, scopri di più sul <a href="https://wildhood.app">nostro sito</a></p>
+
+</div>
+
+<script>
+    function redirectToOtherWebsite() {
+        // Extract the segment after the domain from the current URL
+        var currentPath = window.location.pathname;
+
+        // Redirect to the wildhood app with the dynamic segment
+        window.location.href = "wildhood:" + currentPath;
+    }
+</script>
 </body>
 </html>
