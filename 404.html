@@ -54,11 +54,6 @@
     <img src="https://raw.githubusercontent.com/Abumze978/abumze978.github.io/main/assets/logo.png" alt="">
     <br>
     <button onclick="redirectToOtherWebsite()">Vedi in app</button>
-    <script type="text/javascript">
-        setTimeout(function() {
-            redirectToOtherWebsite();
-        }, 100);
-    </script>
     <br>
     <p>Se ancora non ci conosci, scopri di più sul <a href="https://wildhood.app">nostro sito</a></p>
 
@@ -68,9 +63,36 @@
     function redirectToOtherWebsite() {
         // Extract the segment after the domain from the current URL
         var currentPath = window.location.pathname;
+        var deviceType = detectDevice();
 
-        // Redirect to the wildhood app with the dynamic segment
+        if (deviceType === "iOS") {
+            window.location.href = "wildhood:" + currentPath;
+        }
+
+        if (deviceType === "Android") {
+            window.location.href = "wildhood://thewildhood.app" + currentPath;
+        }
+
+        if (deviceType === "Other") {
+            window.location.href = "https://www.wildhood.app";
+        }
+
         window.location.href = "wildhood:" + currentPath;
+    }
+</script>
+<script>
+    function detectDevice() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/android/i.test(userAgent)) {
+            return "Android";
+        }
+
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
+        }
+
+        return "Other";
     }
 </script>
 </body>
